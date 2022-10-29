@@ -1,0 +1,9 @@
+[package]
+name = "gobang"
+version = "0.0.1"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework", rev = "releases/sui-v0.13.0-release" }
+
+[addresses]
+game =  "0x0"
