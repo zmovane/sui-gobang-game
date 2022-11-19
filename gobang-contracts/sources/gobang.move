@@ -59,7 +59,8 @@ module game::gobang {
 
     /// `w_address` and `b_address` are the account address of the two players.
     public entry fun create_game(w_address: address, b_address: address, ctx: &mut TxContext) {
-        assert!(@game == tx_context::sender(ctx), ENoGrantToCreateGame);
+        // TODO: Validate sender address, only GameAdmin can create games
+        
         let id = object::new(ctx);
         let gameboard = new_gameboard();
         let game = Gobang {
