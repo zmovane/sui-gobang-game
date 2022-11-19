@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 import styled from "styled-components";
 import { Square } from "./Square";
 
@@ -15,13 +15,13 @@ const Element = styled.div`
   z-index: 1;
 
   ${(props: ElementProps) =>
-    props.$value === "black" &&
+    props.$value === "b" &&
     `
    background: black;
   `}
 
   ${(props: ElementProps) =>
-    props.$value === "white" &&
+    props.$value === "w" &&
     `
    background: white;
   `}

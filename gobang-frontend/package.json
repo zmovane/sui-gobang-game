@@ -3,15 +3,50 @@
   "name": "gobang-frontend",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.13",
+    "@mysten/bcs": "^0.5.0",
+    "@mysten/sui.js": "^0.15.0",
+    "@mysten/wallet-adapter-all-wallets": "^0.3.1",
+    "@mysten/wallet-adapter-base": "^0.3.2",
+    "@mysten/wallet-adapter-react": "^7.0.0",
+    "@mysten/wallet-adapter-react-ui": "^0.2.4",
+    "@mysten/wallet-adapter-unsafe-burner": "^0.2.1",
+    "@mysten/wallet-adapter-wallet-standard": "^0.3.1",
+    "@mysten/wallet-standard": "^0.2.1",
+    "@suiet/wallet-kit": "https://github.com/suiet/wallet-kit",
+    "@vitejs/plugin-react": "^2.2.0",
+    "dotenv": "^16.0.3",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "vite": "^3.2.3"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
