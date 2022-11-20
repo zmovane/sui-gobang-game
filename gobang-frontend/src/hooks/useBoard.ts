@@ -7,12 +7,6 @@ export default function useBoard() {
     Array(SIZE).fill(Array(SIZE).fill(null))
   );
   const [winner, _] = useState();
-
-  let turn = 0;
-  const currentTurn = () => {
-    return turn % 2 == 0 ? "b" : "w";
-  };
-
   const updateBoard = useCallback((y: number, x: number, newVal: string) => {
     if (board[y][x]) {
       return false;
@@ -26,23 +20,12 @@ export default function useBoard() {
         });
       })
     );
-
     return true;
   }, []);
-
-  const handlePieceClick = useCallback(
-    (row: number, col: number, value: string) => {
-      if (value) return;
-      if (updateBoard(row, col, currentTurn())) {
-        turn += 1;
-      }
-    },
-    [updateBoard]
-  );
 
   return {
     board,
     winner,
-    handlePieceClick,
+    updateBoard,
   };
 }
