@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { WalletProvider } from "@mysten/wallet-adapter-react";
 import {
   UnsafeBurnerWalletAdapter,
@@ -7,10 +7,10 @@ import {
 import { StartButton } from "./StartButton";
 import { GobangBoard } from "./components/gobang/Board";
 import { WalletWrapper } from "./components/modal/WalletWrapper";
-import { Settings, SettingsContext } from "./contexts/SettingsContext";
+import { SettingsContextProvider } from "./contexts/SettingsContext";
+import { GameContextProvider } from "./contexts/GameContext";
 
 export default function Home() {
-  const [settings, updateSettings] = useState<Settings>({ playing: false });
   const adapters = useMemo(
     () => [
       new WalletStandardAdapterProvider(),
@@ -19,25 +19,18 @@ export default function Home() {
     []
   );
 
-  const settingsProvider = useMemo(
-    () => ({
-      settings,
-      updateSettings: (settings: Settings) => {
-        updateSettings(settings);
-      },
-    }),
-    [settings]
-  );
   return (
     <WalletProvider adapters={adapters}>
       <div>
         <div style={{ position: "absolute", right: "20px", top: "20px" }}>
           <WalletWrapper />
         </div>
-        <SettingsContext.Provider value={settingsProvider}>
-          <StartButton />
-          <GobangBoard className="min-h-screen"></GobangBoard>
-        </SettingsContext.Provider>
+        <SettingsContextProvider>
+          <GameContextProvider>
+            <StartButton />
+            <GobangBoard className="min-h-screen"></GobangBoard>
+          </GameContextProvider>
+        </SettingsContextProvider>
       </div>
     </WalletProvider>
   );
