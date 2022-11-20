@@ -115,9 +115,9 @@ module game::gobang {
 
     fun get_cur_turn_address(game: &Gobang): address {
         if (game.cur_turn % 2 == 0) {
-            *&game.w_address
-        } else {
             *&game.b_address
+        } else {
+            *&game.w_address
         }
     }
 
