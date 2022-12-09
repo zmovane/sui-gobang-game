@@ -4,7 +4,7 @@ const SIZE = 15;
 
 export default function useBoard() {
   const [board, setBoard] = useState<Array<Array<any>>>(
-    Array(SIZE).fill(Array(SIZE).fill(null))
+    Array(SIZE).fill(null).map((_) => Array(SIZE).fill(null))
   );
   const [winner, _] = useState();
   const updateBoard = useCallback((y: number, x: number, newVal: string) => {
